@@ -1,5 +1,5 @@
 "use client";
 
 export default function page() {
-  return <div>page</div>;
+  return <div className="bg-white relative">register page</div>;
 }
