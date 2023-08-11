@@ -5,5 +5,9 @@ export const GlobalContext = createContext(null);
 
 export default function GlobalState({ children }) {
   const [showNavModal, setShowNavModal] = useState(false);
-  return <GlobalContext.Provider calue={{}}>{children}</GlobalContext.Provider>;
+  return (
+    <GlobalContext.Provider value={{ showNavModal, setShowNavModal }}>
+      {children}
+    </GlobalContext.Provider>
+  );
 }
