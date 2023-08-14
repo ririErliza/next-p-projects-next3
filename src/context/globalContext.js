@@ -1,5 +1,6 @@
 "use client";
-import { createContext, useState } from "react";
+import Cookies from "js-cookie";
+import { createContext, useEffect, useState } from "react";
 
 export const GlobalContext = createContext(null);
 
@@ -10,6 +11,20 @@ export default function GlobalState({ children }) {
     loading: false,
     id: "",
   });
+  const [isAuthUser, setIsAuthUser] = useState(null);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    if (Cookies.get("token") !== undefined) {
+      setIsAuthUser(true);
+      const userData = JSON.parse(localStorage.getItem("user")) || {};
+      const getCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+      setUser(userData);
+    } else {
+      setIsAuthUser(false);
+      setUser({}); //unauthenticated user
+    }
+  }, [Cookies]);
 
   return (
     <GlobalContext.Provider
@@ -18,6 +33,12 @@ export default function GlobalState({ children }) {
         setShowNavModal,
         pageLevelLoader,
         setPageLevelLoader,
+        componentLevelLoader,
+        setComponentLevelLoader,
+        isAuthUser,
+        setIsAuthUser,
+        user,
+        setUser,
       }}
     >
       {children}
