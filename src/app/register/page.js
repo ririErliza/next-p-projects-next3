@@ -2,7 +2,6 @@
 
 import ComponentLevelLoader from "@/components/ComponentLevelLoader";
 import InputComponent from "@/components/FormElements/InputComponent";
-import SelectComponent from "@/components/FormElements/SelectComponent";
 import Notification from "@/components/Notification";
 import { GlobalContext } from "@/context/globalContext";
 import { registerNewUser } from "@/services/registerService";
@@ -15,6 +14,7 @@ const initialFormData = {
   name: "",
   email: "",
   password: "",
+  role: "user",
 };
 
 export default function Register() {
