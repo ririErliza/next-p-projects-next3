@@ -15,7 +15,6 @@ const initialFormData = {
   name: "",
   email: "",
   password: "",
-  role: "customer",
 };
 
 export default function Register() {
@@ -93,20 +92,9 @@ export default function Register() {
                   {registrationFormControls.map((controlItem) =>
                     controlItem.componentType === "input" ? (
                       <InputComponent
+                        key={controlItem.id}
                         type={controlItem.type}
                         placeholder={controlItem.placeholder}
-                        label={controlItem.label}
-                        onChange={(event) => {
-                          setFormData({
-                            ...formData,
-                            [controlItem.id]: event.target.value,
-                          });
-                        }}
-                        value={formData[controlItem.id]}
-                      />
-                    ) : controlItem.componentType === "select" ? (
-                      <SelectComponent
-                        options={controlItem.options}
                         label={controlItem.label}
                         onChange={(event) => {
                           setFormData({
