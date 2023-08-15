@@ -5,7 +5,7 @@ import InputComponent from "@/components/FormElements/InputComponent";
 import Notification from "@/components/Notification";
 import { GlobalContext } from "@/context/globalContext";
 import { login } from "@/services/loginService";
-import { loginFormControls } from "@/utils/loginFormControls";
+import { loginFormControls } from "@/utils";
 
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
@@ -17,7 +17,7 @@ const initialFormdata = {
   password: "",
 };
 
-export default function page() {
+export default function Login() {
   const [formData, setFormData] = useState(initialFormdata);
   const {
     isAuthUser,
@@ -30,7 +30,7 @@ export default function page() {
 
   const router = useRouter();
 
-  console.log(formData);
+  //console.log(formData);
 
   function isValidForm() {
     return formData &&
@@ -72,6 +72,7 @@ export default function page() {
   useEffect(() => {
     if (isAuthUser) router.push("/");
   }, [isAuthUser]);
+
   return (
     <div className="bg-white relative">
       <div className="flex flex-col items-center justify-between pt-0 pr-10 pb-0 pl-10 mt-8 mr-auto xl:px-5 lg:flex-row">
