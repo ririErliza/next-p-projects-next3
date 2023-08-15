@@ -5,7 +5,8 @@ import InputComponent from "@/components/FormElements/InputComponent";
 import Notification from "@/components/Notification";
 import { GlobalContext } from "@/context/globalContext";
 import { registerNewUser } from "@/services/registerService";
-import { registrationFormControls } from "@/utils/registrationFormControls";
+import { registrationFormControls } from "@/utils";
+
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
